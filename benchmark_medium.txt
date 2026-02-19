@@ -1,0 +1,100 @@
+SIZE 1000 1000
+
+# Մուտք/Ելք (Fixed Pads)
+BLOCK IN_1 50 50 FIXED 0 500
+BLOCK IN_2 50 50 FIXED 0 1500
+BLOCK OUT_1 50 50 FIXED 1950 500
+BLOCK OUT_2 50 50 FIXED 1950 1500
+
+# Ֆունկցիոնալ Բլոկներ (Standard Cells)
+BLOCK Cell_01 10 8
+BLOCK Cell_02 10 80
+BLOCK Cell_03 10 6
+BLOCK Cell_04 12 6
+BLOCK Cell_05 20 15
+BLOCK Cell_06 8 8
+BLOCK Cell_07 8 8
+BLOCK Cell_08 10 10
+BLOCK Cell_09 15 10
+BLOCK Cell_10 10 10
+BLOCK Cell_11 9 9
+BLOCK Cell_12 9 9
+BLOCK Cell_13 10 5
+BLOCK Cell_14 10 5
+BLOCK Cell_15 20 20
+BLOCK Cell_16 6 6
+BLOCK Cell_17 6 6
+BLOCK Cell_18 10 10
+BLOCK Cell_19 13 13
+BLOCK Cell_20 10 12
+
+BLOCK Cell_21 10 6
+BLOCK Cell_22 20 15
+BLOCK Cell_23 8 8
+BLOCK Cell_24 8 8
+BLOCK Cell_25 15 10
+BLOCK Cell_26 15 10
+BLOCK Cell_27 10 10
+BLOCK Cell_28 9 9
+BLOCK Cell_29 9 9
+BLOCK Cell_30 11 5
+BLOCK Cell_31 110 50
+BLOCK Cell_32 25 20
+BLOCK Cell_33 6 6
+BLOCK Cell_34 6 6
+BLOCK Cell_35 13 13
+BLOCK Cell_36 13 13
+BLOCK Cell_37 18 12
+
+BLOCK Cell_38 12 6
+BLOCK Cell_39 20 15
+BLOCK Cell_40 8 8
+BLOCK Cell_41 8 8
+BLOCK Cell_42 15 10
+BLOCK Cell_43 15 10
+BLOCK Cell_44 10 10
+BLOCK Cell_45 9 9
+BLOCK Cell_46 9 9
+BLOCK Cell_47 11 5
+BLOCK Cell_48 11 5
+BLOCK Cell_49 25 20
+BLOCK Cell_50 6 6
+BLOCK Cell_51 6 6
+BLOCK Cell_52 13 13
+BLOCK Cell_53 13 13
+BLOCK Cell_54 18 12
+
+BLOCK Cell_55 12 6
+BLOCK Cell_56 20 15
+BLOCK Cell_57 10 9
+BLOCK Cell_58 20 15
+BLOCK Cell_59 8 8
+BLOCK Cell_60 8 8
+
+# Ցանց (Nets) - Պատահական կապեր
+NET n1 IN_1 Cell_01 Cell_02
+NET n2 Cell_01 Cell_03 Cell_05
+NET n3 Cell_02 Cell_04 Cell_06
+NET n4 Cell_03 Cell_07 Cell_08
+NET n5 Cell_04 Cell_09 Cell_10
+NET n6 Cell_05 Cell_11 Cell_15
+NET n7 Cell_06 Cell_12
+NET n8 Cell_07 Cell_13
+NET n9 Cell_08 Cell_14
+NET n10 Cell_09 Cell_15 OUT_1
+NET n11 Cell_10 Cell_16
+NET n12 Cell_11 Cell_17
+NET n13 Cell_12 Cell_18
+NET n14 Cell_13 Cell_19
+NET n15 Cell_14 Cell_20 OUT_2
+NET n16 Cell_15 Cell_01 Cell_20
+NET n17 Cell_16 Cell_02
+NET n18 Cell_17 Cell_03
+NET n19 Cell_18 Cell_04
+NET n20 Cell_19 Cell_05
+
+NET n21 Cell_35 Cell_29 Cell_05
+NET n22 Cell_02 Cell_33 Cell_06
+NET n23 Cell_33 Cell_07 Cell_08
+NET n24 Cell_25 Cell_09 Cell_10
+NET n25 Cell_05 Cell_60 Cell_15
