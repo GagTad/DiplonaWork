@@ -620,16 +620,42 @@ void MainWindow::updateChartData(double iteration, double cost) {
     hpwlSeries_->append(iteration, hpwl);
     overlapSeries_->append(iteration, overlap);
 
-    // Limit number of points for performance
+    // Սահմանափակում ենք կետերի քանակը, որ ծրագիրը չդանդաղի (Sliding Window)
     if (costSeries_->count() > MAX_CHART_POINTS) {
         costSeries_->remove(0);
         hpwlSeries_->remove(0);
         overlapSeries_->remove(0);
     }
 
-    // Update axes
-    if (costSeries_->count() > 1) {
+    // --- ՍԿՍՎՈՒՄ Է ՈՒՂՂՎԱԾ ՀԱՏՎԱԾԸ ---
+    // Վերցնում ենք գոյություն ունեցող առանցքները
+    auto axesX = costChart_->axes(Qt::Horizontal);
+    auto axesY = costChart_->axes(Qt::Vertical);
+
+    if (axesX.isEmpty() || axesY.isEmpty()) {
+        // Եթե դեռ առանցքներ չկան, ստեղծում ենք
         costChart_->createDefaultAxes();
+    } else {
+        // Դինամիկ թարմացնում ենք առանցքների սահմանները առանց դրանք ջնջելու
+        QValueAxis *axisX = qobject_cast<QValueAxis*>(axesX.first());
+        QValueAxis *axisY = qobject_cast<QValueAxis*>(axesY.first());
+
+        if (axisX && axisY) {
+            // X առանցքը՝ Իտերացիաներ
+            axisX->setMin(costSeries_->at(0).x());
+            axisX->setMax(std::max(10.0, iteration));
+
+            // Գտնում ենք էկրանին երևացող ամենամեծ արժեքը Y առանցքի համար
+            double currentMaxY = 0;
+            for(int i = 0; i < costSeries_->count(); ++i) {
+                if(costSeries_->at(i).y() > currentMaxY) {
+                    currentMaxY = costSeries_->at(i).y();
+                }
+            }
+            // Y առանցքը դնում ենք մաքսիմալից 10% ավել, որ գրաֆիկը վերևից չկպչի եզրին
+            axisY->setMin(0);
+            axisY->setMax(currentMaxY * 1.1);
+        }
     }
 }
 
