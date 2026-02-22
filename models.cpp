@@ -131,15 +131,15 @@ const Net* Chip::getNet(Net::ID id) const {
 double Chip::getTotalOverlapArea() const {
     double totalOverlap = 0.0;
 
-    // Check all pairs of non-fixed blocks
     for (size_t i = 0; i < blocks_.size(); ++i) {
-        if (blocks_[i].isFixed()) continue;
-
         for (size_t j = i + 1; j < blocks_.size(); ++j) {
+            // Բաց թողնել միայն, եթե երկուսն էլ ֆիքսված են
+            if (blocks_[i].isFixed() && blocks_[j].isFixed()) {
+                continue;
+            }
             totalOverlap += blocks_[i].overlapArea(blocks_[j]);
         }
     }
-
     return totalOverlap;
 }
 
