@@ -22,9 +22,4 @@ Simulated Annealing functions continuously, often leaving minor fractional cell 
 * Packing cells sequentially into defined circuit rows.
 * Aligning cell boundaries to the site grid while minimizing displacement from the SA-calculated optimal positions.
 
- Acknowledgments
-Special thanks to the instructors and academic advisors at Synopsys Armenia and university faculty for their technical guidance in Electronic Design Automation concepts.
-
-Algorithmic concepts inspired by foundational industry literature on Simulated Annealing Optimization (Kirkpatrick et al.) and TimberWolf placement systems.
-
 Developed with ❤️ by Gagik.
